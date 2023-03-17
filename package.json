@@ -1,0 +1,19 @@
+{
+  "name": "nyt-backend-books-and-movies",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/SergioIglesiasPicallo/NYT-Backend-Books-And-Movies.git",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "nodemon": "^2.0.21",
+    "pg": "^8.10.0",
+    "prettier": "^2.8.4",
+    "sequelize": "^6.29.3",
+    "sequelize-cli": "^6.6.0"
+  }
+}
