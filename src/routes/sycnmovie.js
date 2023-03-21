@@ -1,5 +1,5 @@
 const Router = require('express').Router;
-const apiCallMovie = require("../services/api").apiCallMovie
+const apiCallMovie = require("../services/api").apiCallMovies
 const routerMoviesApi = Router();
 
 routerMoviesApi.get('/', async (req, res) => {
