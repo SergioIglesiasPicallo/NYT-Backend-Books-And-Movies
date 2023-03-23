@@ -1,5 +1,5 @@
 const jsonwebtoken = require('jsonwebtoken');
-const db = require('../models/index.js');
+const db = require('../models/index.js').default;
 const User = db.User;
 
 const ensureAuthenticated = async (req, res, next) => {

@@ -1,4 +1,4 @@
-const db = require("../models/index.js");
+const db = require("../models/index.js").default;
 const Movie = db.movie
 
 const getMovieList = async () => {

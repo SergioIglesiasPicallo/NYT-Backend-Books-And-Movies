@@ -1,7 +1,7 @@
 const { getBookList, getBookId, updateBook, deleteBook } = require('../controlers/book')
 const Router = require('express').Router;
 const routerBook = Router()
-const db = require("../models/index.js");
+const db = require("../models/index.js").default;
 const Book = db.book
 
 

@@ -1,5 +1,5 @@
-const db = require('../models/index.js');
-const user = require('../models/user.js');
+const db = require('../models/index.js').default;
+const user = require('../models/user.js').default;
 const User = db.User;
 const Post = db.Post;
 
