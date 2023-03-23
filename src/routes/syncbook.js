@@ -1,5 +1,5 @@
-const Router = require('express').Router;
-const apiCallBook = require("../services/api").apiCallBooks
+import { Router } from 'express';
+import { apiCallBooks as apiCallBook } from "../services/api";
 const routerBooksApi = Router();
 
 routerBooksApi.get('/', async (req, res) => {
@@ -14,4 +14,4 @@ routerBooksApi.get('/', async (req, res) => {
 })
 
 
-module.exports = routerBooksApi
+export default routerBooksApi

@@ -1,10 +1,7 @@
-const Router = require('express').Router;
-const jsonwebtoken = require('jsonwebtoken');
-const {
-    updateUserFavListPost,
-    getUserFavorites,
-} = require('../controllers/user.js');
-const getUserByEmail = require('../controllers/user.js').getUserByEmail;
+import { Router } from 'express';
+import { decode } from 'jsonwebtoken';
+import { updateUserFavListPost, getUserFavorites } from '../controllers/user.js';
+import { getUserByEmail } from '../controllers/user.js';
 const routerUser = Router();
 
 routerUser.post('/:postId', async (req, res) => {
@@ -77,7 +74,7 @@ routerUser.get('/profile', async (req, res) => {
  */
 routerUser.get('/id/:token', async (req, res) => {
     try {
-        const payload = jsonwebtoken.decode(
+        const payload = decode(
             req.params.token,
             process.env.TOKEN_SECRET
         );
@@ -91,4 +88,4 @@ routerUser.get('/id/:token', async (req, res) => {
     }
 });
 
-module.exports = routerUser;
+export default routerUser;

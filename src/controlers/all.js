@@ -1,5 +1,5 @@
-const Book = require('../models/books');
-const Movie = require('../models/movies');
+const Book = require('../models/books').default;
+const Movie = require('../models/movies').default;
 const User = require('../models/user').default;
 
 export const getAll = async () => {
