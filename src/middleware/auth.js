@@ -1,5 +1,5 @@
-const jsonwebtoken = require('jsonwebtoken');
-const db = require('../models/index.js').default;
+import { decode } from 'jsonwebtoken';
+import db from '../models/index.js';
 const User = db.User;
 
 const ensureAuthenticated = async (req, res, next) => {
@@ -12,7 +12,7 @@ const ensureAuthenticated = async (req, res, next) => {
 
     !token && res.status(403).json({ message: 'Invalid token' });
 
-    const payload = jsonwebtoken.decode(token, process.env.TOKEN_SECRET);
+    const payload = decode(token, process.env.TOKEN_SECRET);
 
     !payload ||
         (!payload.email && res.status(403).json({ message: 'Invalid token' }));
@@ -26,4 +26,4 @@ const ensureAuthenticated = async (req, res, next) => {
     return next();
 };
 
-module.exports = ensureAuthenticated;
+export default ensureAuthenticated;
