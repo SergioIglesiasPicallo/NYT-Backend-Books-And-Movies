@@ -1,5 +1,5 @@
 import { decode } from 'jsonwebtoken';
-import db from '../models/index.js';
+const db = require('../models/index.js').default.default;
 const User = db.User;
 
 const ensureAuthenticated = async (req, res, next) => {

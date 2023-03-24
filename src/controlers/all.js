@@ -1,6 +1,6 @@
 const Book = require('../models/books').default;
-const Movie = require('../models/movies').default;
-const User = require('../models/user').default;
+const Movie = require('../models/movies');
+const User = require('../models/user');
 
 export const getAll = async () => {
     const bookList = await Book.findAll();

@@ -1,5 +1,5 @@
-import db from '../models/index.js';
-import user from '../models/user.js';
+const db = require('../models/index.js').default.default;
+const user = require('../models/user.js');
 const User = db.User;
 const Post = db.Post;
 
@@ -66,7 +66,7 @@ const getUserFavorites = async (userId) => {
         console.log('Error at bring user favorites' + error.message);
     }
 };
-export default {
+module.exports = {
     getUserByEmail,
     getUserId,
     updateUserFavListPost,

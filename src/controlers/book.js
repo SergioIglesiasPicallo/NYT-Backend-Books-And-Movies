@@ -1,4 +1,4 @@
-const db = require("../models/index.js").default;
+const db = require("../models/index.js").default.default;
 const Book = db.book
 
 const getBookList = async () => {

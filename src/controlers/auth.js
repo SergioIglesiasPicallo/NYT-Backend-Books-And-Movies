@@ -1,9 +1,9 @@
-import { user as _user } from "../models/index.js";
-import { genSalt, hash, compare } from 'bcrypt';
-import { sign } from 'jsonwebtoken';
+const db = require("../models/index.js").default;
+const bcrypt = require('bcrypt');
+const jsonwebtoken = require('jsonwebtoken');
 const saltRounds = 10;
-import { getUserByEmail } from './user.js';
-const User = _user;
+const getUserByEmail = require('./user.js').getUserByEmail;
+const User = db.user;
 
 
 
@@ -15,12 +15,12 @@ const signup = async ({ email, password }) => {
         throw new Error('User already exists');
     }
 
-    const salt = await genSalt(saltRounds);
-    const hashedPassword = await hash(password, salt);
+    const salt = await bcrypt.genSalt(saltRounds);
+    const hashedPassword = await bcrypt.hash(password, salt);
     const user = await User.create({ email, password: hashedPassword, salt })
     await user.save();
 
-    return sign({ email: user.email }, process.env.TOKEN_SECRET, {
+    return jsonwebtoken.sign({ email: user.email }, process.env.TOKEN_SECRET, {
         expiresIn: '24h'
     })
 
@@ -36,18 +36,18 @@ const login = async ({ email, password }) => {
         throw new Error('User does not exist');
     }
 
-    const match = await compare(password, user.password);
+    const match = await bcrypt.compare(password, user.password);
     // console.log(match)
 
     if (!match) {
         throw new Error('Invalid password');
     }
 
-    return sign({ email: user.email }, process.env.TOKEN_SECRET, {
+    return jsonwebtoken.sign({ email: user.email }, process.env.TOKEN_SECRET, {
         expiresIn: '24h'
     })
 
 
 }
 
-export default { signup, login }
+module.exports = { signup, login }

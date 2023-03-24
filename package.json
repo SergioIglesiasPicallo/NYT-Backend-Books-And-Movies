@@ -6,7 +6,7 @@
   "repository": "https://github.com/SergioIglesiasPicallo/NYT-Backend-Books-And-Movies.git",
   "license": "MIT",
   "scripts": {
-    "dev":"nodemon ./src/index.js"
+    "start":"nodemon ./src/index.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",

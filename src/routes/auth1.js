@@ -36,4 +36,4 @@ routerAuth.post('/login', async (req, res) => {
     }
 })
 
-export default routerAuth;
+export default routerAuth1;

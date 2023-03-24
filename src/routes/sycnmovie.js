@@ -1,5 +1,5 @@
-import { Router } from 'express';
-import { apiCallMovies as apiCallMovie } from "../services/api";
+const Router = require('express').Router;
+const apiCallMovie = require("../services/api").apiCallMovies
 const routerMoviesApi = Router();
 
 routerMoviesApi.get('/', async (req, res) => {
@@ -14,4 +14,4 @@ routerMoviesApi.get('/', async (req, res) => {
 })
 
 
-export default routerMoviesApi
+module.exports = routerMoviesApi
