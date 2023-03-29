@@ -17,16 +17,7 @@ if (config.use_env_variable) {
     sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
-// async function testConection(){
-   
-//     try {
-//         await sequelize.authenticate();
-//         console.log('Connection has been established successfully.');
-        
-//       } catch (error) {
-//         console.error('Unable to connect to the database:', error);
-//       }
-//     }
+
   
 
 
@@ -46,17 +37,13 @@ Object.keys(db).forEach(modelName => {
     }
 });
 
-//testConection()
+
 
 db.sequelize = sequelize;
 
-//CREa conflicto...
-// db.Sequelize = Sequelize;
-// db.sequelize.sync()
 
 
 
 
 
-// Exportamos la instancia de Sequelize en lugar de los modelos individuales
 module.exports = db;
