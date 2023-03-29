@@ -31,3 +31,5 @@ const ensureAuthenticated = async (req, res, next) => {
 };
 
 module.exports = ensureAuthenticated;
+
+// In this document we set: if the user doesnt have a token it cant go to the protected routes
