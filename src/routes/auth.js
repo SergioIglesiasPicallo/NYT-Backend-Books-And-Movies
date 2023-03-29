@@ -1,5 +1,5 @@
-import { signup, login } from '../controlers/auth';
-import { Router } from 'express';
+const { signup, login } = require('../controllers/auth');
+const Router = require('express').Router;
 const routerAuth = Router();
 
 routerAuth.post('/signup', async (req, res) => {
@@ -36,4 +36,4 @@ routerAuth.post('/login', async (req, res) => {
     }
 })
 
-export default routerAuth;
+module.exports = routerAuth;

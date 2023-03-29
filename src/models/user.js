@@ -3,16 +3,20 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
     class User extends Model {
         static associate(models) {
-            User.belongsToMany(models.Post, {
-                through: 'postUsers',
+            User.belongsTo(models.Book, {
+                through: 'book_user',
                 as: 'UserPosts',
                 foreignKey: 'user_FK',
+                otherKey: 'post_FK'
             });
-            User.belongsToMany(models.Post, {
-                through: 'postUserFavorites',
-                as: 'postsFavorites',
-                foreignKey: 'user_favorites_FK',
+
+            User.belongsTo(models.Movie, {
+                through: 'movie_user',
+                as: 'UserMovie',
+                foreignKey: 'user_FK',
+                otherKey: 'post_FK'
             });
+      
         }
     }
     User.init(
@@ -38,18 +42,12 @@ module.exports = (sequelize, DataTypes) => {
             salt: {
                 type: DataTypes.STRING,
             },
-            createdAt: {
-                allowNull: false,
-                type: DataTypes.DATE,
-            },
-            updatedAt: {
-                allowNull: false,
-                type: DataTypes.DATE,
-            },
         },
         {
             sequelize,
             modelName: 'User',
+            createdAt: 'createdAt',
+            updatedAt: 'updatedAt',
         }
     );
     return User;

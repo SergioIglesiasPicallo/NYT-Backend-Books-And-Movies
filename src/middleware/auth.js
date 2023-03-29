@@ -1,29 +1,33 @@
-import { decode } from 'jsonwebtoken';
-const db = require('../models/index.js').default.default;
+const jsonwebtoken = require('jsonwebtoken');
+const db = require('../models/index.js');
 const User = db.User;
 
 const ensureAuthenticated = async (req, res, next) => {
-    if (req.path.includes('/auth')) return next();
 
-    !req.headers.authorization &&
-        res.status(403).json({ message: 'You are not authenticated' });
 
-    const token = req.headers.authorization.split(' ')[1];
 
-    !token && res.status(403).json({ message: 'Invalid token' });
+        if (req.path.includes('/auth')) return next();
 
-    const payload = decode(token, process.env.TOKEN_SECRET);
+        !req.headers.authorization &&
+            res.status(403).json({ message: 'You are not authenticated' });
 
-    !payload ||
-        (!payload.email && res.status(403).json({ message: 'Invalid token' }));
+        const token = req.headers.authorization.split(' ')[1];
 
-    const user = await User.findOne({ where: { email: payload.email } });
+        !token && res.status(403).json({ message: 'Invalid token' });
 
-    !user && res.status(403).json({ message: 'Invalid token' });
+        const payload = jsonwebtoken.decode(token, process.env.TOKEN_SECRET);
 
-    req.user = user;
+        !payload ||
+            (!payload.email && res.status(403).json({ message: 'Invalid token' }));
 
-    return next();
+        const user = await User.findOne({ where: { email: payload.email } });
+
+        !user && res.status(403).json({ message: 'Invalid token' });
+
+        req.user = user;
+
+        return next();
+ 
 };
 
-export default ensureAuthenticated;
+module.exports = ensureAuthenticated;

@@ -1,8 +1,8 @@
-const { getBookList, getBookId, updateBook, deleteBook } = require('../controlers/book')
+const { getBookList, getBookId, updateBook, deleteBook } = require('../controllers/book')
 const Router = require('express').Router;
 const routerBook = Router()
-const db = require("../models/index.js").default.default;
-const Book = db.book
+const db = require("../models/index.js");
+const Book = db.Book
 
 
 routerBook.get('/', async (req, res) => {

@@ -2,12 +2,13 @@
   "name": "nyt-backend-books-and-movies",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "module",
+  "scripts": {
+    "start":"nodemon ./src/index.js",
+    "startdb": "docker compose up",
+    "stopdb": "docker compose down"
+  },
   "repository": "https://github.com/SergioIglesiasPicallo/NYT-Backend-Books-And-Movies.git",
   "license": "MIT",
-  "scripts": {
-    "start":"nodemon ./src/index.js"
-  },
   "dependencies": {
     "bcrypt": "^5.1.0",
     "bcryptjs": "^2.4.3",

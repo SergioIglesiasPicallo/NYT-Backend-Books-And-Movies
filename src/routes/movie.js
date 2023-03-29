@@ -1,8 +1,11 @@
-const db = require("../models/index.js").default.default;
-const Movie = db.movie
-const Movie = require('express').Movie;
-const { getMovieList, getMovieId, updateMovie, deleteMovie } = require('../controlers/movie');
-const routerMovie = Movie()
+const Router = require('express').Router;
+const { getMovieList, getMovieId, updateMovie, deleteMovie } = require('../controllers/movie.js');
+const db = require("../models/index.js");
+const Movie = db.Movie
+const routerMovie = Router()
+
+
+
 
 
 routerMovie.get('/', async (req, res) => {

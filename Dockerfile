@@ -1,5 +1,5 @@
 FROM node:14.15.3-slim as node_binaries
-FROM ubuntu:20.04
+FROM ubuntu:20.04 
 ARG wait_for_it_mirror=https://raw.githubusercontent.com/vishnubob/wait-for-it/81b1373f17855a4dc21156cfe1694c31d7d1792e/wait-for-it.sh
 ADD "${wait_for_it_mirror}" /usr/local/bin/wait-for-it
 RUN chmod 755 /usr/local/bin/wait-for-it

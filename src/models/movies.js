@@ -2,17 +2,17 @@
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class movies extends Model {
+  class Movie extends Model {
     static associate(models) {
-      models.movies.belongsToMany(models.user, {
+      models.Movie.belongsToMany(models.User, {
         through: 'userMovie',
         as: 'movieFavorites',
-        foreignKey: 'movieId'
+        foreignKey: 'id'
       });
     }
   }
 
-  movies.init({
+  Movie.init({
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -66,8 +66,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     sequelize,
-    modelName: 'movies'
+    modelName: 'Movie'
   });
 
-  return movies;
+  return Movie;
 };

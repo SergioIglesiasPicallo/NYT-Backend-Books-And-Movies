@@ -1,13 +1,13 @@
 'use strict';
-import { Model } from 'sequelize';
+const { Model } = require('sequelize');
 
-export default (sequelize, DataTypes) => {
+module.exports = (sequelize, DataTypes) => {
   class Book extends Model {
     static associate(models) {
       models.Book.belongsToMany(models.User, {
         through: 'userBook',
         as: 'bookFavorites',
-        foreignKey: 'bookId'
+        foreignKey: 'id'
       });
     }
   }
@@ -37,7 +37,7 @@ export default (sequelize, DataTypes) => {
     },
     description: {
       allowNull: false,
-      type: DataTypes.TEXT
+      type: DataTypes.TEXT //('long')??
     },
     coverUrl: {
       allowNull: false,

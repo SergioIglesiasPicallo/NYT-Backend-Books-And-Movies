@@ -1,3 +1,8 @@
+const fetch = require("node-fetch");
+const db = require('../models/index.js');
+const Book= db.book
+const Movie = db.movie
+
 async function apiCallBooks() {
     try {
       const response = await fetch(
@@ -8,6 +13,7 @@ async function apiCallBooks() {
       const newList = data.results.books.map((book) => ({
         title: book.title,
         date: book.published_date,
+        //Faltan campos
       }));
       // Ordenar el array por fecha en orden ascendente
       newList.sort((a, b) => new Date(b.date) - new Date(a.date));
